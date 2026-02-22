@@ -57,7 +57,7 @@ for rec in pm.lookup(22, 80):
 | `--history [DAYS]` | Fetch revision history *(default: 365 days)* |
 | `--serve`          | Start the JSON API server                    |
 | `--host ADDR`      | API bind address *(default: `127.0.0.1`)*    |
-| `--port PORT`      | API bind port *(default: `6660`)*             |
+| `--port PORT`      | API bind port *(default: `6660`)*            |
 
 ## Examples
 
@@ -88,12 +88,12 @@ portmap --serve --host 0.0.0.0 --port 8080
 
 Start with `portmap --serve`. Binds to `127.0.0.1:6660` by default.
 
-| Endpoint             | Description                                            |
-|:---------------------|:-------------------------------------------------------|
-| `GET /`              | API info and available endpoints                       |
-| `GET /ports`         | All ports *(query: `?search=TERM&limit=N&offset=N`)*  |
-| `GET /ports/80,443`  | Lookup specific ports *(comma-separated, 0–65535)*     |
-| `GET /history`       | Revision history *(query: `?limit=N&offset=N`)*       |
+| Endpoint            | Description                                          |
+|:--------------------|:-----------------------------------------------------|
+| `GET /`             | API info and available endpoints                     |
+| `GET /ports`        | All ports *(query: `?search=TERM&limit=N&offset=N`)* |
+| `GET /ports/80,443` | Lookup specific ports *(comma-separated, 0–65535)*   |
+| `GET /history`      | Revision history *(query: `?limit=N&offset=N`)*      |
 
 ```bash
 curl -s localhost:6660/ports/22,80 | jq .
