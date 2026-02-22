@@ -3,7 +3,7 @@
 
 '''Scrape the Wikipedia list of TCP/UDP port numbers into a local database with revision tracking.'''
 
-__version__ = '2.0.0'
+__version__ = '1.0.3'
 __all__     = ['PortMap', '__version__']
 
 import json
