@@ -1,0 +1,29 @@
+[build-system]
+requires      = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name            = "portmap"
+version         = "2.0.0"
+description     = "Scrape TCP/UDP port assignments from Wikipedia into a local NDJSON database"
+readme          = "README.md"
+license         = {text = "ISC"}
+requires-python = ">=3.9"
+authors         = [{name = "acidvegas", email = "acid.vegas@acid.vegas"}]
+keywords        = ["ports", "tcp", "udp", "wikipedia", "ndjson", "networking"]
+classifiers     = [
+	"Development Status :: 5 - Production/Stable",
+	"Intended Audience :: Developers",
+	"Intended Audience :: System Administrators",
+	"License :: OSI Approved :: ISC License (ISCL)",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3",
+	"Topic :: System :: Networking",
+]
+
+[project.urls]
+Homepage   = "https://github.com/acidvegas/portmap"
+Repository = "https://github.com/acidvegas/portmap"
+
+[project.scripts]
+portmap = "portmap.__main__:main"
