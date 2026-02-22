@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name            = "portmapper"
-version         = "1.0.3"
+version         = "1.0.4"
 description     = "Scrape TCP/UDP port assignments from Wikipedia into a local NDJSON database"
 readme          = "README.md"
 license         = {text = "ISC"}
@@ -24,6 +24,7 @@ classifiers     = [
 [project.urls]
 Homepage   = "https://github.com/acidvegas/portmap"
 Repository = "https://github.com/acidvegas/portmap"
+PyPI       = "https://pypi.org/project/portmapper/"
 
 [project.scripts]
 portmap = "portmap.__main__:main"

@@ -5,7 +5,7 @@ Scrape the [Wikipedia list of TCP/UDP port numbers](https://en.wikipedia.org/wik
 ## Install
 
 ```bash
-pip install portmap
+pip install portmapper
 ```
 
 ## Python Library
