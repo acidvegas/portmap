@@ -11,12 +11,14 @@ import sys
 import urllib.parse
 import urllib.request
 
-WIKI_API     = 'https://en.wikipedia.org/w/api.php'
-USER_AGENT   = 'portmap/1.0 (https://github.com/acidvegas/portmap)'
-PAGE_TITLE   = 'List_of_TCP_and_UDP_port_numbers'
-OUTPUT_FILE  = 'ports.ndjson'
-HISTORY_FILE = 'history.ndjson'
-STATE_FILE   = '.last_revision'
+
+WIKI_API        = 'https://en.wikipedia.org/w/api.php'
+USER_AGENT      = 'portmap/1.0 (https://github.com/acidvegas/portmap)'
+PAGE_TITLE      = 'List_of_TCP_and_UDP_port_numbers'
+OUTPUT_FILE     = 'ports.ndjson'
+HISTORY_FILE    = 'history.ndjson'
+HISTORY_MD_FILE = 'history.md'
+STATE_FILE      = '.last_revision'
 
 
 def wiki_query(params: dict) -> dict:
@@ -355,6 +357,15 @@ def write_markdown(records: list, path: str):
         f.write(format_ports_markdown(records))
 
 
+def write_history_markdown():
+    '''Write revision history as a markdown file.'''
+
+    md = format_history_markdown()
+    if md:
+        with open(HISTORY_MD_FILE, 'w') as f:
+            f.write(md)
+
+
 def fetch_and_save() -> list:
     '''Scrape Wikipedia, write NDJSON + markdown + history, return records.'''
 
@@ -384,6 +395,8 @@ def fetch_and_save() -> list:
         for entry in revisions:
             f.write(json.dumps(entry, ensure_ascii=False) + '\n')
     logging.debug(f'Saved {len(revisions):,} revisions to {HISTORY_FILE}')
+
+    write_history_markdown()
 
     save_state(rev)
 
@@ -589,7 +602,8 @@ def main():
         with open(HISTORY_FILE, 'w') as f:
             for rev in revisions:
                 f.write(json.dumps(rev, ensure_ascii=False) + '\n')
-        logging.info(f'Wrote {len(revisions)} revisions to {HISTORY_FILE}')
+        write_history_markdown()
+        logging.info(f'Wrote {len(revisions)} revisions to {HISTORY_FILE} and {HISTORY_MD_FILE}')
         return
 
     if args.u:
@@ -622,6 +636,7 @@ def main():
             print(history_md)
     else:
         print_table(records)
+
 
 
 if __name__ == '__main__':

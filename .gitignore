@@ -1,2 +1,4 @@
+# Portmap - Scrape TCP/UDP port assignments from Wikipedia into NDJSON - Developed by acidvegas (https://github.com/acidvegas/portmap)
+# .gitignore
+
 .last_revision
-*.ndjson
