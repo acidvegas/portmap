@@ -3,6 +3,7 @@
 
 .last_revision
 __pycache__/
+portmap/__pycache__/
 *.egg-info/
 dist/
 build/
